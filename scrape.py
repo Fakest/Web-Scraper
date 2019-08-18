@@ -17,6 +17,14 @@ for element in data:
 	finally:
 		pass
 
-	eName = element.find('a',{'class':'item-title'})
+	eName = element.find('a',{'class':'item-title'}).text
 	ePrice = element.find('li',{'class':'price-current'})
-	print(eBrand, '\n', eName.text, '\n', ePrice.text)
+	try:
+		eDiscount = element.find('span',{'class':'price-save-percent'}).text
+	except Exception as e:
+		eDiscount = 'None'
+	else:
+		pass
+	finally:
+		pass
+	print(eBrand, '\n', eName, '\n', '£', ePrice.strong.text, ePrice.sup.text, '\n', eDiscount)
