@@ -10,6 +10,7 @@ file = 'data.csv'
 data = soup.find_all('div',{'class':'item-container'})
 with open(file, 'a') as f:
 	writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+	writer.writerow(['Brand', 'Name', 'Price', 'Discount'])
 	for element in data:
 		try: #some items dont have a brand
 			eBrand = element.find('div', 'item-info').div.a.img['title']
