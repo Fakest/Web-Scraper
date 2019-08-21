@@ -6,8 +6,8 @@ This is a basic web scraper that scans the Graphic cards from New Egg and extrac
 This data is then output to a CSV file for further use.
 
 Libraries used:
-	CSV
-	Beautiful Soup 4
+	CSV,
+	Beautiful Soup 4,
 	Requests
 	
 Further development ideas:
