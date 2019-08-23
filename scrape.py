@@ -1,7 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
+from time import sleep
+
 data = []
+index = 0
 
 file = 'data.csv'
 
@@ -9,7 +12,7 @@ with open(file, 'a') as f:
 	writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 	writer.writerow(['Brand', 'Name', 'Price', 'Discount'])
 	for pg in range(0, 16):
-		source = requests.get('https://www.newegg.com/global/uk-en/Desktop-Graphics-Cards/SubCategory/ID-48/Page-' + str(pg) + '?Tid=1582767').text
+		source = requests.get('https://www.newegg.com/global/uk-en/Desktop-Graphics-Cards/SubCategory/ID-48/Page-' + str(pg)).text + '?Tid=1582767'
 		print(source)
 		soup = BeautifulSoup(source, 'lxml')
 		data = soup.find_all('div',{'class':'item-container'})
@@ -47,9 +50,10 @@ with open(file, 'a') as f:
 			finally:
 				pass
 			
-			writer.writerow([eBrand, eName, eTotal, eDiscount])
-			print(eBrand, '\n', eName, '\n', eTotal, '\n', eDiscount)
-			
-			#clean up
+			writer.writerow([index, eBrand, eName, eTotal, eDiscount])
+			print(index, '\n', eBrand, '\n', eName, '\n', eTotal, '\n', eDiscount)
+			index = index+1
+		#attempt to stop detection of this script by slowing down its requests for new pages
+		sleep(1)
 
 
