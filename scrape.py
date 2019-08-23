@@ -4,13 +4,13 @@ import csv
 from time import sleep
 
 data = []
-index = 0
+index = 1
 
 file = 'data.csv'
 
 with open(file, 'a') as f:
 	writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-	writer.writerow(['Brand', 'Name', 'Price', 'Discount'])
+	writer.writerow(['Index', 'Brand', 'Name', 'Price', 'Discount'])
 	for pg in range(0, 16):
 		source = requests.get('https://www.newegg.com/global/uk-en/Desktop-Graphics-Cards/SubCategory/ID-48/Page-' + str(pg)).text + '?Tid=1582767'
 		print(source)
