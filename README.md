@@ -5,6 +5,8 @@ This is a basic web scraper that scans the Graphic cards from New Egg and extrac
 
 This data is then output to a CSV file for further use.
 
+Newegg detects when a script is being used and presents a captcha, to try and handle this I have added a timer that should make the script appear more human like.
+
 Libraries used:
 	CSV,
 	Beautiful Soup 4,
