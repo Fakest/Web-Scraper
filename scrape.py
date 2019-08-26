@@ -55,5 +55,3 @@ with open(file, 'a') as f:
 			index = index+1
 		#attempt to stop detection of this script by slowing down its requests for new pages
 		sleep(1)
-
-
